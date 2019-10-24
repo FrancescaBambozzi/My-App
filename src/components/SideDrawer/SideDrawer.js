@@ -16,7 +16,10 @@ const sideDrawer = props => {
                     <Link to="/cities">Cities</Link>
                 </li>
                 <li>
-                    <Link to="/my-account">My Itinerary</Link>
+                    <Link to="/my-itinerary">My Itinerary</Link>
+                </li>
+                <li>
+                    <Link to="/signup">Create Account</Link>
                 </li>
             </ul>
         </nav>

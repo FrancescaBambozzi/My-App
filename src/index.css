@@ -13,7 +13,7 @@ body, html {
 
 /* --- LANDING PAGE --- */
 
-.landing-container {
+.container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -23,8 +23,10 @@ body, html {
 }
 
 .logo {
-  width: 350px;
+  width: 360px;
+  height: 150px;
 }
+
 /* ToolBar */
 
 .toolbar {
@@ -56,10 +58,7 @@ body, html {
   padding: 0;
   display: flex;
   /*position items next to each other*/
-}
-
-.toolbar_navigation-items li {
-  padding: 0 0.5rem;
+  padding: 0 1.2rem;
 }
 
 .toolbar_navigation-items a {
@@ -68,7 +67,7 @@ body, html {
 }
 
 .toolbar_navigation-items a:hover, .toolbar_navigation-items a:active {
-  color: #17a2b8;
+  color: rgba(23, 162, 184, .8);
   text-decoration: none;
 }
 
@@ -132,13 +131,13 @@ body, html {
 }
 
 .side-drawer a {
-  color: #b81751;
+  color: rgb(184, 23, 81);
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .side-drawer a:hover, .side-drawer a:active {
-  color: #9f1b15;
+  color: rgb(184, 23, 81);
 }
 
 .backdrop {
@@ -149,4 +148,75 @@ body, html {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+/* --- LandingContent Style --- */
+
+h1 {
+  font-weight: 300;
+  font-size: 1.1rem;
+  padding: 0 15px 30px 15px;
+}
+
+/*Button*/
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 19px 22px;
+  transition: all .2s ease;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: rgb(185, 126, 22, 0.6);
+  width: 56px;
+  height: 56px;
+  transition: all .3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 900;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #111;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all .3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: rgb(185, 126, 22, 0.6);;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.96);
 }

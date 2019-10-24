@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Toolbar from '../Toolbar/Toolbar'
 import SideDrawer from '../SideDrawer/SideDrawer'
 import Backdrop from '../SideDrawer/Backdrop'
-import LandingContent from '../Contents/LandingContent'
 
 class LandingPage extends Component {
     state = {
@@ -23,11 +22,10 @@ class LandingPage extends Component {
             backdrop = <Backdrop clickToCloseSlider={this.backDropCloseHandler}/>
         }
         return (
-            <div className="landing-container" >
+            <div className="container" >
                 <Toolbar drawerClickHandler={this.drawerToggleClickHandle} />
                 <SideDrawer show={this.state.sideDrawerOpen}/> 
                 {backdrop}
-                <LandingContent />
             </div>
         )
     }
