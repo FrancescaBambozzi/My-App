@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* --- LANDING PAGE --- */
+
+.landing-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.logo {
+  width: 350px;
+}
+/* ToolBar */
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #17a2b8;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+  height: 56px;
+}
+
+.spacer {
+  flex: 1;
+  /*it takes all available space between the 2 adjacent divs*/
+}
+
+.toolbar_navigation {
+  display: flex;
+  height: 100%;
+  /*of the toolbar - 56px, it alignes the elements at the center*/
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.toolbar_navigation-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  /*position items next to each other*/
+}
+
+.toolbar_navigation-items li {
+  padding: 0 0.5rem;
+}
+
+.toolbar_navigation-items a {
+  color: white;
+  text-decoration: none;
+}
+
+.toolbar_navigation-items a:hover, .toolbar_navigation-items a:active {
+  color: #17a2b8;
+  text-decoration: none;
+}
+
+/* ToggleButton */
+
+.toggle-button {
+  /*to make the horiz lines*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /*create space between the lines*/
+  height: 24px;
+  width: 36px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button_line {
+  width: 30px;
+  height: 2px;
+  background: white;
+}
+
+/* SideDrawer */
+
+.side-drawer {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 2;
+  transform: translateX(-100%);
+  /*move to the left by its full width*/
+  transition: transform 0.4s ease-out;
+}
+
+.side-drawer.open {
+  /*to style elements that have both classes*/
+  transform: translateX(0);
+}
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-drawer li {
+  margin: 0.5rem 0;
+}
+
+.side-drawer a {
+  color: #b81751;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.side-drawer a:hover, .side-drawer a:active {
+  color: #9f1b15;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
