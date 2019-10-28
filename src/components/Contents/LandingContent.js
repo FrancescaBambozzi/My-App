@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/img/logo1.png'
+import Carousel from './Carousel';
 
 const LandingContent = () => (
     <div className="container">
@@ -15,7 +16,9 @@ const LandingContent = () => (
                     <polyline points="8 1 12 5 8 9"></polyline>
                 </svg>
             </Link>
-
+            <div>
+                <Carousel />
+            </div>
         </main>
     </div>
 )
