@@ -1,41 +1,48 @@
 const express = require('express');
 const app = express();
+var cors = require('cors');
 const bodyParser = require('body-parser');
-var port = process.env.PORT || 8080;
-const mongoose = require('mongoose');
-const City = require('./models/City');
+const MongoClient = require('mongodb').MongoClient;
+var router = express.Router(); // get an instance of router
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 // MongoDB database
-const dbRoute =
-    'mongodb+srv://FrancescaDB:caneotto8!@cluster0-iqjsd.mongodb.net/test?retryWrites=true&w=majority';
+const mongoURL = "mongodb+srv://FrancescaDB:caneotto8!@cluster0-iqjsd.mongodb.net/test?retryWrites=true&w=majority";
+const port = process.env.PORT || 8080;
 
-// connects the back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true });
-let db = mongoose.connection;
+MongoClient.connect(mongoURL, (err, db) => {
+    var dbase = db.db("itinerary-app");
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('MongoDB connection success')
+    }
 
-db.once('open', () => console.log('MongoDB database connected successfully'));
-// checks if connection with the database is successful
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+    app.listen(port, function () {
+        console.log('Magic happen on port ' + port)
+    })
 
-// ROUTES
-// get an instance of router
-var router = express.Router();
+    // landing page route (http://localhost:8080)
+    router.get('/', function (req, res) {
+        res.send('Landing Page')
+    })
 
-// landing page route (http://localhost:8080)
-router.get('/', function (req, res) {
-    res.send('Landing Page')
+    //Cities Page route
+    router.get('/cities/all', function (req, res) {
+        dbase.collection("cities").find().toArray((err, result) => {
+            if (!err) {
+                return res.send(result)
+            }
+        })
+    })
+
+    app.use('/', router);
+
 })
 
-//Cities Page route
-router.get('/cities', function (req, res) {
-    City.find((err, cities) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, cities: cities });
-    });
-})
 
 //Single City route using Parameters
 
@@ -54,9 +61,3 @@ app.route('/login')
         res.send('processing the login form!');
     });
 
-app.use('/', router);
-
-// START THE SERVER
-app.listen(port, function () {
-    console.log('Magic happen on port ' + port)
-})
