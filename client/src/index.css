@@ -231,3 +231,13 @@ h1 {
 polygon {
   display: none;
 }
+
+/* CITIES PAGE */
+.cities-container {
+  margin-top: 80px;
+}
+
+.card-content {
+  width: 300px;
+  border: 1px solid black;
+}
